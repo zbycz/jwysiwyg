@@ -330,6 +330,14 @@
 				groupIndex: 1,
 				visible: true,
 				tags: ["center"],
+				exec: function(){
+					var img = this.dom.getElement("img");
+					var range = this.getInternalRange();
+					if( img !== null && range.endContainer == range.startContainer ){
+						   $(img).css("float", "none")
+					}
+					this.editorDoc.execCommand("justifyCenter", false, null);
+				},
 				css: {
 					textAlign: "center"
 				},
@@ -339,6 +347,16 @@
 			justifyFull: {
 				groupIndex: 1,
 				visible: true,
+				exec: function(){
+					var img = this.dom.getElement("img");
+					var range = this.getInternalRange();
+					if( img !== null && range.endContainer == range.startContainer ){
+						$(img).css("float", "none")
+					}
+					else {
+						this.editorDoc.execCommand("justifyBlock", false, null);
+					}
+				},
 				css: {
 					textAlign: "justify"
 				},
@@ -348,8 +366,19 @@
 			justifyLeft: {
 				visible: true,
 				groupIndex: 1,
+				exec: function(){
+					var img = this.dom.getElement("img");
+					var range = this.getInternalRange();
+					if( img !== null && range.endContainer == range.startContainer ){
+						$(img).css("float", "left");
+					}
+					else {
+						this.editorDoc.execCommand("justifyLeft", false, null);
+					}
+				},
 				css: {
-					textAlign: "left"
+					textAlign: "left",
+					float:"left"
 				},
 				tooltip: "Justify Left"
 			},
@@ -357,8 +386,19 @@
 			justifyRight: {
 				groupIndex: 1,
 				visible: true,
+				exec: function(){
+					var img = this.dom.getElement("img");
+					var range = this.getInternalRange();
+					if( img !== null && range.endContainer == range.startContainer ){
+						$(img).css("float", "right")
+					}
+					else {
+						this.editorDoc.execCommand("justifyRight", false, null);
+					}
+				},
 				css: {
-					textAlign: "right"
+					textAlign: "right",
+					float:"right"
 				},
 				tooltip: "Justify Right"
 			},
